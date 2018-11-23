@@ -1121,11 +1121,11 @@ namespace HostComputer
                         break;
 
                     case 10:   //车模式
-                        xcoefficient = 0.005;
-                        ycoefficient = 0.3;
+                        xcoefficient = 0.008;
+                        ycoefficient = 0.5;
 
-                        carmovesendx = carmovex * xcoefficient; //线速度转化为-0.5 - 0.5
-                        carmovesendy = carmovey * ycoefficient; //转角速度转化为-30 - 30
+                        carmovesendx = carmovex * xcoefficient; //线速度转化为-0.8 - 0.8
+                        carmovesendy = carmovey * ycoefficient; //转角速度转化为-50 - 50
 
                         //CallErrorDeleget(Error, carmovesendx.ToString() + "," + carmovesendy.ToString()); //测试串口数据
 
