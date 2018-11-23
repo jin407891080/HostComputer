@@ -156,6 +156,8 @@ namespace HostComputer
             ArmBtn10.AddHandler(Button.MouseDownEvent, new MouseButtonEventHandler(btn_MouseDown), true);
             ArmBtn11.AddHandler(Button.MouseDownEvent, new MouseButtonEventHandler(btn_MouseDown), true);
             ArmBtn12.AddHandler(Button.MouseDownEvent, new MouseButtonEventHandler(btn_MouseDown), true);
+            ArmBtn13.AddHandler(Button.MouseDownEvent, new MouseButtonEventHandler(btn_MouseDown), true);
+            ArmBtn14.AddHandler(Button.MouseDownEvent, new MouseButtonEventHandler(btn_MouseDown), true);
             ArmBtn1.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseUp), true);
             ArmBtn2.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseUp), true);
             ArmBtn3.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseUp), true);
@@ -168,6 +170,8 @@ namespace HostComputer
             ArmBtn10.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseUp), true);
             ArmBtn11.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseUp), true);
             ArmBtn12.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseUp), true);
+            ArmBtn13.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseUp), true);
+            ArmBtn14.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseUp), true);
             //点动模式履带摆动分组控制
             CarFrontUp.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(CarFrontUp_MouseUp), true);
             CarFrontUp.AddHandler(Button.MouseDownEvent, new MouseButtonEventHandler(CarFrontUp_MouseDown), true);
@@ -716,9 +720,18 @@ namespace HostComputer
                         CallPositionDeleget(TextBox10, Upper_Lower_Com.R_ActPos);
                         RobotInteraction.JPos[1] = "b" + RobotInteraction.Posvalue_Decide(Upper_Lower_Com.R_ActPos);
                         break;
-                    case 10:
+                    case 10: //大臂伸缩
+                        if (Upper_Lower_Com.R_Enable != 0)
+                        {
+                            CallBlueDeleget(Image15);
+                        }
+                        else
+                        {
+                            CallRedDeleget(Image15);
+                        }
+                        CallPositionDeleget(TextBox15, Upper_Lower_Com.R_ActPos);
+                        //RobotInteraction.JPos[2] = "m" + RobotInteraction.Posvalue_Decide(Upper_Lower_Com.R_ActPos);
                         break;
-
                     case 11: //中臂
                         if (Upper_Lower_Com.R_Enable != 0)
                         {
@@ -1457,6 +1470,28 @@ namespace HostComputer
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(130, 0x1);
                 }
+                if (btn.Name == "ArmBtn13") //大臂伸展
+                {
+                    //carmoveflag = 8;
+                    //uplowcom.SendUintInstruct(20, 0x2);
+                    velocityToLower = -pointvelocity * 0.01;
+                    uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
+                    Thread.Sleep(1);
+                    uplowcom.SendUintInstruct(10, 0x2);
+                    Thread.Sleep(1);
+                    uplowcom.SendUintInstruct(130, 0x1);
+                }
+                if (btn.Name == "ArmBtn14") //大臂收缩
+                {
+                    //carmoveflag = 8;
+                    //uplowcom.SendUintInstruct(20, 0x2);
+                    velocityToLower = pointvelocity * 0.01;
+                    uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
+                    Thread.Sleep(1);
+                    uplowcom.SendUintInstruct(10, 0x2);
+                    Thread.Sleep(1);
+                    uplowcom.SendUintInstruct(130, 0x1);
+                }
             }
         }
 
@@ -1574,6 +1609,14 @@ namespace HostComputer
                     SetInstructToZero();
                 }
                 if (btn.Name == "ArmBtn12")
+                {
+                    SetInstructToZero();
+                }
+                if (btn.Name == "ArmBtn13")
+                {
+                    SetInstructToZero();
+                }
+                if (btn.Name == "ArmBtn14")
                 {
                     SetInstructToZero();
                 }
