@@ -149,3 +149,16 @@ C:\Users\Krahets\Desktop\Work Now\MarsRobot\HostComputer\CircularGauge\obj\Debug
 C:\Users\Krahets\Desktop\Work Now\MarsRobot\HostComputer\CircularGauge\obj\Debug\CircularGauge.csproj.CoreCompileInputs.cache
 C:\Users\Krahets\Desktop\Work Now\MarsRobot\HostComputer\CircularGauge\obj\Debug\CircularGauge.dll
 C:\Users\Krahets\Desktop\Work Now\MarsRobot\HostComputer\CircularGauge\obj\Debug\CircularGauge.pdb
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\CircularGauge\bin\Debug\CircularGauge.dll
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\CircularGauge\bin\Debug\CircularGauge.pdb
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\CircularGauge\obj\Debug\CircularGauge.csprojAssemblyReference.cache
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\CircularGauge\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\CircularGauge\obj\Debug\CircularGauge_MarkupCompile.cache
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\CircularGauge\obj\Debug\CircularGauge_MarkupCompile.lref
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\CircularGauge\obj\Debug\Themes\Generic.baml
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\CircularGauge\obj\Debug\CircularGauge.g.resources
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\CircularGauge\obj\Debug\CircularGauge.Properties.Resources.resources
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\CircularGauge\obj\Debug\CircularGauge.csproj.GenerateResource.cache
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\CircularGauge\obj\Debug\CircularGauge.csproj.CoreCompileInputs.cache
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\CircularGauge\obj\Debug\CircularGauge.dll
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\CircularGauge\obj\Debug\CircularGauge.pdb

@@ -469,3 +469,26 @@ C:\Users\Krahets\Desktop\Work Now\MarsRobot\HostComputer\HostComputer\obj\Debug\
 C:\Users\Krahets\Desktop\Work Now\MarsRobot\HostComputer\HostComputer\obj\Debug\HostComputer.csproj.CopyComplete
 C:\Users\Krahets\Desktop\Work Now\MarsRobot\HostComputer\HostComputer\obj\Debug\HostComputer.exe
 C:\Users\Krahets\Desktop\Work Now\MarsRobot\HostComputer\HostComputer\obj\Debug\HostComputer.pdb
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\bin\Debug\HostComputer.exe.config
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\bin\Debug\HostComputer.exe
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\bin\Debug\HostComputer.pdb
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\bin\Debug\CircularGauge.dll
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\bin\Debug\CircularGauge.pdb
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\HostComputer.csprojAssemblyReference.cache
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\HostComputer.csproj.ResolveComReference.cache
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\ButtonStyle.baml
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\Dictionary1.baml
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\Dictionary2.baml
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\Simpleslider.baml
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\MainWindow.g.cs
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\App.g.cs
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\HostComputer_MarkupCompile.cache
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\HostComputer_MarkupCompile.lref
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\MainWindow.baml
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\HostComputer.g.resources
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\HostComputer.Properties.Resources.resources
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\HostComputer.csproj.GenerateResource.cache
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\HostComputer.csproj.CoreCompileInputs.cache
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\HostComputer.csproj.CopyComplete
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\HostComputer.exe
+C:\Users\jin40\Source\Repos\jin407891080\HostComputer\HostComputer\obj\Debug\HostComputer.pdb

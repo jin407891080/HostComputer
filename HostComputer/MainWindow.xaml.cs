@@ -1042,9 +1042,9 @@ namespace HostComputer
                              armsendy < 0.05 && armsendy > -0.05)
                         {
                             //发机械臂xy速度
-                            uplowcom.SendDoubleInstruct(-armsendy, 0x5);
+                            uplowcom.SendDoubleInstruct(-armsendx, 0x5);
                             Thread.Sleep(1);
-                            uplowcom.SendDoubleInstruct(armsendx, 0x6);
+                            uplowcom.SendDoubleInstruct(-armsendy, 0x6);
                             Thread.Sleep(1);
                             uplowcom.SendUintInstruct(100, 0x1);
                             Thread.Sleep(1);
@@ -1136,7 +1136,6 @@ namespace HostComputer
                             uplowcom.SendDoubleInstruct(carmovesendy, 0x6);
                             uplowcom.SendUintInstruct(90, 0x1);
                         }
-
                         break;
 
                     default:
@@ -1166,7 +1165,7 @@ namespace HostComputer
                     velocityToLower = pointvelocity / 1000;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
-                    uplowcom.SendUintInstruct(0, 0x2);
+                    uplowcom.SendUintInstruct(1, 0x2);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(110, 0x1);
                 }
@@ -1177,7 +1176,7 @@ namespace HostComputer
                     velocityToLower = pointvelocity / 1000;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
-                    uplowcom.SendUintInstruct(1, 0x2);
+                    uplowcom.SendUintInstruct(0, 0x2);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(110, 0x1);
                 }
@@ -1188,7 +1187,7 @@ namespace HostComputer
                     velocityToLower = pointvelocity / 1000;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
-                    uplowcom.SendUintInstruct(2, 0x2);
+                    uplowcom.SendUintInstruct(3, 0x2);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(110, 0x1);
                 }
@@ -1199,7 +1198,7 @@ namespace HostComputer
                     velocityToLower = pointvelocity / 1000;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
-                    uplowcom.SendUintInstruct(3, 0x2);
+                    uplowcom.SendUintInstruct(2, 0x2);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(110, 0x1);
                 }
@@ -1210,7 +1209,7 @@ namespace HostComputer
                     velocityToLower = -pointvelocity * 0.03;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
-                    uplowcom.SendUintInstruct(4, 0x2);
+                    uplowcom.SendUintInstruct(5, 0x2);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(120, 0x1);
                 }
@@ -1221,7 +1220,7 @@ namespace HostComputer
                     velocityToLower = -pointvelocity * 0.03;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
-                    uplowcom.SendUintInstruct(5, 0x2);
+                    uplowcom.SendUintInstruct(4, 0x2);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(120, 0x1);
                 }
@@ -1232,7 +1231,7 @@ namespace HostComputer
                     velocityToLower = -pointvelocity * 0.03;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
-                    uplowcom.SendUintInstruct(6, 0x2);
+                    uplowcom.SendUintInstruct(7, 0x2);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(120, 0x1);
                 }
@@ -1243,7 +1242,7 @@ namespace HostComputer
                     velocityToLower = -pointvelocity * 0.03;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
-                    uplowcom.SendUintInstruct(7, 0x2);
+                    uplowcom.SendUintInstruct(6, 0x2);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(120, 0x1);
                 }
@@ -1254,7 +1253,7 @@ namespace HostComputer
                     velocityToLower = -pointvelocity / 1000;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
-                    uplowcom.SendUintInstruct(0, 0x2);
+                    uplowcom.SendUintInstruct(1, 0x2);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(110, 0x1);
                 }
@@ -1265,7 +1264,7 @@ namespace HostComputer
                     velocityToLower = -pointvelocity / 1000;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
-                    uplowcom.SendUintInstruct(1, 0x2);
+                    uplowcom.SendUintInstruct(0, 0x2);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(110, 0x1);
                 }
@@ -1276,7 +1275,7 @@ namespace HostComputer
                     velocityToLower = -pointvelocity / 1000;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
-                    uplowcom.SendUintInstruct(2, 0x2);
+                    uplowcom.SendUintInstruct(3, 0x2);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(110, 0x1);
                 }
@@ -1287,7 +1286,7 @@ namespace HostComputer
                     velocityToLower = -pointvelocity / 1000;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
-                    uplowcom.SendUintInstruct(3, 0x2);
+                    uplowcom.SendUintInstruct(2, 0x2);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(110, 0x1);
                 }
@@ -1298,7 +1297,7 @@ namespace HostComputer
                     velocityToLower = pointvelocity * 0.03;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
-                    uplowcom.SendUintInstruct(4, 0x2);
+                    uplowcom.SendUintInstruct(5, 0x2);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(120, 0x1);
                 }
@@ -1309,7 +1308,7 @@ namespace HostComputer
                     velocityToLower = pointvelocity * 0.03;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
-                    uplowcom.SendUintInstruct(5, 0x2);
+                    uplowcom.SendUintInstruct(4, 0x2);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(120, 0x1);
                 }
@@ -1320,7 +1319,7 @@ namespace HostComputer
                     velocityToLower = pointvelocity * 0.03;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
-                    uplowcom.SendUintInstruct(6, 0x2);
+                    uplowcom.SendUintInstruct(7, 0x2);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(120, 0x1);
                 }
@@ -1331,7 +1330,7 @@ namespace HostComputer
                     velocityToLower = pointvelocity * 0.03;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
-                    uplowcom.SendUintInstruct(7, 0x2);
+                    uplowcom.SendUintInstruct(6, 0x2);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(120, 0x1);
                 }
@@ -1342,7 +1341,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity * 0.04;
+                    velocityToLower = pointvelocity * 0.04;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(8, 0x2);
@@ -1353,7 +1352,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity * 0.02;
+                    velocityToLower = pointvelocity * 0.02;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(9, 0x2);
@@ -1364,7 +1363,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity * 0.02;
+                    velocityToLower = pointvelocity * 0.02;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(11, 0x2);
@@ -1375,7 +1374,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity * 0.02;
+                    velocityToLower = pointvelocity * 0.02;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(12, 0x2);
@@ -1397,7 +1396,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity * 0.08;
+                    velocityToLower = -pointvelocity * 0.8;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(14, 0x2);
@@ -1408,7 +1407,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity * 0.04;
+                    velocityToLower = -pointvelocity * 0.04;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(8, 0x2);
@@ -1419,7 +1418,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity * 0.02;
+                    velocityToLower = -pointvelocity * 0.02;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(9, 0x2);
@@ -1430,7 +1429,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity * 0.02;
+                    velocityToLower = -pointvelocity * 0.02;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(11, 0x2);
@@ -1441,7 +1440,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity * 0.02;
+                    velocityToLower = -pointvelocity * 0.02;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(12, 0x2);
@@ -1463,7 +1462,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity * 0.08;
+                    velocityToLower = pointvelocity * 0.8;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(14, 0x2);
@@ -1474,7 +1473,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity * 0.01;
+                    velocityToLower = pointvelocity * 0.02;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(10, 0x2);
@@ -1485,7 +1484,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity * 0.01;
+                    velocityToLower = -pointvelocity * 0.02;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(10, 0x2);
@@ -1963,17 +1962,17 @@ namespace HostComputer
                     Thread.Sleep(10);
 
                 }
-                if ((string)mi.Header == "机械臂归原位")
+                if ((string)mi.Header == "机械臂寻参")
                 {
-                    uplowcom.SendUintInstruct(80, 0x1);   //寻参
+                    uplowcom.SendUintInstruct(80, 0x1); //寻参
                 }
-                if ((string)mi.Header == "摆姿态")
+                if ((string)mi.Header == "机械臂归位")
                 {
-                    uplowcom.SendUintInstruct(360, 0x1);
+                    uplowcom.SendUintInstruct(290, 0x1); //机械臂归原位
                 }
                 if ((string)mi.Header == "机器人暂停")
                 {
-                    uplowcom.SendUintInstruct(70, 0x1);
+                    uplowcom.SendUintInstruct(70, 0x1); //暂停
                 }
                 if ((string)mi.Header == "机械臂腰寻零")
                 {
@@ -2201,26 +2200,10 @@ namespace HostComputer
 
                     // robotInteraction.Udp_SendMessageInt("0");
                 }
-                //if ((string)mi.Header == "关闭机械臂抱闸")
-                //{
-                //    uplowcom.SendUintInstruct(250, 0x1);
-                //    Thread.Sleep(50);
-                //    //uplowcom.SendUintInstruct(10, 0x1);//清错
-                //    Thread.Sleep(50);
-                //    
-                //}
                 if ((string)mi.Header == "摆臂上使能")
                 {
 
                 }
-                //if ((string)mi.Header == "关闭车体抱闸")
-                //{
-                //    uplowcom.SendUintInstruct(240, 0x1);
-                //    Thread.Sleep(50);
-                //    //uplowcom.SendUintInstruct(10, 0x1);//清错
-                //    Thread.Sleep(50);
-                //    
-                //}
             }
         }
         #endregion
@@ -2238,145 +2221,6 @@ namespace HostComputer
                 {
                     uplowcom.SendUintInstruct(30, 0x1);
                 }
-                //if ((string)Mi.Header == "基坐标系")
-                //{
-                //  //  EndMenuItem.IsCheckable = false;
-                //    modeflag = false;
-                //    carmoveflag = 9;
-                //    uplowcom.SendUintInstruct(1, 0x16);//基坐标系
-                //    uplowcom.SendUintInstruct(40, 0x1);//车体下使能
-                //    Thread.Sleep(10);
-                //    //uplowcom.SendUintInstruct(10, 0x1);//清错
-                //    Thread.Sleep(10);
-                //    
-                //    Thread.Sleep(10);
-                //    
-                //    Thread.Sleep(10);
-                //    //uplowcom.SendUintInstruct(10, 0x1);//清错
-                //    Thread.Sleep(10);
-                //    
-                //    Thread.Sleep(10);
-                //    uplowcom.SendUintInstruct(30, 0x1);//机械臂上使能
-                //    Thread.Sleep(10);
-                //    //uplowcom.SendUintInstruct(10, 0x1);//清错
-                //    Thread.Sleep(10);
-                //    
-                //    Thread.Sleep(10);
-                //    uplowcom.SendUintInstruct(160, 0x1);
-                //    if (!serialinterface.timer.Enabled)
-                //    {
-                //        serialinterface.timer.Enabled = true;
-                //    }
-                //    if (serialinterface.serialport2.IsOpen)
-                //    {
-                //        serialinterface.serialport2.Close();
-                //    }
-                //    if (!serialinterface.serialport2.IsOpen)
-                //    {
-                //        if (serialinterface.serialport1.IsOpen)
-                //        {
-                //            serialinterface.serialport1.Close();
-                //            if (!serialinterface.serialport1.IsOpen)
-                //            {
-                //                try
-                //                {
-                //                    serialinterface.serialport1.Open();
-                //                    MessageBox.Show("基于基坐标系手模式打开");
-                //                }
-                //                catch (Exception ex)
-                //                {
-                //                    MessageBox.Show(ex.Message);
-                //                    return;
-                //                }
-                //            }
-                //        }
-                //        else
-                //        {
-                //            try
-                //            {
-                //                serialinterface.serialport1.Open();
-                //                MessageBox.Show("基于基坐标系手模式打开");
-                //            }
-                //            catch (Exception ex)
-                //            {
-                //                MessageBox.Show(ex.Message);
-                //                return;
-                //            }
-                //        }
-                //    }
-                //}
-                //if ((string)Mi.Header == "末端坐标系")
-                //{
-                //    BaseMenuItem.IsCheckable = false;
-                //    modeflag = false;
-                //    carmoveflag = 9;
-                //    uplowcom.SendUintInstruct(2, 0x16);//末端坐标系
-                //    uplowcom.SendUintInstruct(40, 0x1);//车体下使能
-                //    Thread.Sleep(10);
-                //    //uplowcom.SendUintInstruct(10, 0x1);//清错
-                //    Thread.Sleep(10);
-                //    
-                //    Thread.Sleep(10);
-                //    
-                //    Thread.Sleep(10);
-                //    //uplowcom.SendUintInstruct(10, 0x1);//清错
-                //    Thread.Sleep(10);
-                //    
-                //    Thread.Sleep(10);
-                //    uplowcom.SendUintInstruct(30, 0x1);//机械臂上使能
-                //    Thread.Sleep(10);
-                //    //uplowcom.SendUintInstruct(10, 0x1);//清错
-                //    Thread.Sleep(10);
-                //    
-                //    Thread.Sleep(10);
-                //    uplowcom.SendUintInstruct(160, 0x1);
-                //    Thread.Sleep(10);
-                //    //uplowcom.SendUintInstruct(180, 0x1);
-                //    //Thread.Sleep(50);
-                //    
-                //    if (!serialinterface.timer.Enabled)
-                //    {
-                //        serialinterface.timer.Enabled = true;
-                //    }
-                //    if (serialinterface.serialport2.IsOpen)
-                //    {
-                //        serialinterface.serialport2.Close();
-                //    }
-                //    if (!serialinterface.serialport2.IsOpen)
-                //    {
-                //        if (serialinterface.serialport1.IsOpen)
-                //        {
-                //            serialinterface.serialport1.Close();
-                //            if (!serialinterface.serialport1.IsOpen)
-                //            {
-                //                try
-                //                {
-                //                    serialinterface.serialport1.Open();
-                //                    MessageBox.Show("基于末端坐标系手模式打开");
-                //                }
-                //                catch (Exception ex)
-                //                {
-                //                    MessageBox.Show(ex.Message);
-                //                    return;
-                //                }
-                //            }
-                //        }
-                //        else
-                //        {
-                //            try
-                //            {
-                //                serialinterface.serialport1.Open();
-                //                MessageBox.Show("基于末端坐标系手模式打开");
-                //            }
-                //            catch (Exception ex)
-                //            {
-                //                MessageBox.Show(ex.Message);
-                //                return;
-                //            }
-                //        }
-                //    }                
-                //}
-
             }
         }
 
@@ -2436,7 +2280,7 @@ namespace HostComputer
         {
             if (stopflag == false)
             {
-                uplowcom.SendUintInstruct(60, 0x1); //总复位
+                uplowcom.SendUintInstruct(60, 0x1); //复位
             }
         }
         #endregion
@@ -2578,18 +2422,18 @@ namespace HostComputer
         #endregion
 
         #region 水炮枪操作
-        private void WaterWeapon_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult result = MessageBox.Show("您是否要操作水炮枪？", "水炮枪操作提示信息", MessageBoxButton.YesNo, MessageBoxImage.Information);
-            if (result == MessageBoxResult.Yes)
-            {
-                uplowcom.SendUintInstruct(340, 0x1);
-            }
-            else if (result == MessageBoxResult.No)
-            {
-                return;
-            }
-        }
+        //private void WaterWeapon_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MessageBoxResult result = MessageBox.Show("您是否要操作水炮枪？", "水炮枪操作提示信息", MessageBoxButton.YesNo, MessageBoxImage.Information);
+        //    if (result == MessageBoxResult.Yes)
+        //    {
+        //        uplowcom.SendUintInstruct(340, 0x1);
+        //    }
+        //    else if (result == MessageBoxResult.No)
+        //    {
+        //        return;
+        //    }
+        //}
         #endregion
 
         #region 摄像头相关功能
