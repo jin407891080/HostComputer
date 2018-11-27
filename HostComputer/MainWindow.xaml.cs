@@ -47,12 +47,15 @@ namespace HostComputer
         private double carmovey = 0.0; //标准化的车移动摇杆值x
         private double carmovesendx = 0.0; //发送给下位机的车移动x
         private double carmovesendy = 0.0; //发送给下位机的车移动y
+        private double carmovesendx_last = 0.0;
+        private double carmovesendy_last = 0.0;
         private double armx = 0.0; //标准化的机械臂摇杆值x
         private double army = 0.0; //标准化的机械臂摇杆值y
         private double armz = 0.0; //标准化的机械臂摇杆值z
         private double armsendx = 0.0; //发送给下位机的机械臂速度x
         private double armsendy = 0.0; //发送给下位机的机械臂速度y
         private double armsendz = 0.0; //发送给下位机的机械臂速度z
+        private bool is_arm_stop = false; //控制只发一次暂停命令，否则手模式下机器人失控
         private double xcoefficient;
         private double ycoefficient;
         double[,] wvCaculatingMatrix = new double[2, 2] { { 0, 0 }, { 0, 0 } }; //逆推机械臂各轴角速度计算矩阵
@@ -1034,20 +1037,33 @@ namespace HostComputer
                         break;
 
                     case 9:   //手模式                  
-                        armsendx = armx * 0.0005; //x速度转化为-0.05 - 0.05;
-                        armsendy = army * 0.0005; //y速度转化为-0.05 - 0.05;
+                        armsendx = armx * 0.0012; //x速度转化为-0.12 - 0.12;
+                        armsendy = army * 0.0012; //y速度转化为-0.12 - 0.12;
                         armsendz = -armz * 0.04; //z速度转化为-4 - 4; 腰左右旋
 
-                        if (armsendx < 0.05 && armsendx > -0.05 &&
-                             armsendy < 0.05 && armsendy > -0.05)
+                        if (armx < 80 && armx > -80 && army < 80 && army > -80)
                         {
-                            //发机械臂xy速度
-                            uplowcom.SendDoubleInstruct(-armsendx, 0x5);
-                            Thread.Sleep(1);
-                            uplowcom.SendDoubleInstruct(-armsendy, 0x6);
-                            Thread.Sleep(1);
-                            uplowcom.SendUintInstruct(100, 0x1);
-                            Thread.Sleep(1);
+                            if (!is_arm_stop && armx < 10 && armx > -10 && army < 10 && army > -10)
+                            {
+                                uplowcom.SendUintInstruct(70, 0x1); //暂停
+                                is_arm_stop = true;
+                            }
+                            else if (is_arm_stop && armx < 10 && armx > -10 && army < 10 && army > -10)
+                            {
+                                //Do nothing.
+                            }
+                            else
+                            {
+                                //发机械臂xy速度
+                                uplowcom.SendDoubleInstruct(-armsendy, 0x5);
+                                Thread.Sleep(1);
+                                uplowcom.SendDoubleInstruct(armsendx, 0x6);
+                                Thread.Sleep(1);
+                                uplowcom.SendUintInstruct(100, 0x1);
+                                Thread.Sleep(1);
+
+                                is_arm_stop = false;
+                            }
 
                             //发腰速度
                             uplowcom.SendDoubleInstruct(armsendz, 0x4);
@@ -1129,7 +1145,7 @@ namespace HostComputer
 
                         //CallErrorDeleget(Error, carmovesendx.ToString() + "," + carmovesendy.ToString()); //测试串口数据
 
-                        if (carmovesendx < xcoefficient * 100 && carmovesendy < ycoefficient * 100 && carmovesendx > -xcoefficient * 100 && carmovesendy > -ycoefficient * 100)
+                        if (carmovex < 90 && carmovey < 90 && carmovex > -90 && carmovey > -90) 
                         {
                             //机器人速度保护
                             uplowcom.SendDoubleInstruct(carmovesendx, 0x5);
@@ -1152,6 +1168,13 @@ namespace HostComputer
 
         #region 鼠标点动控制
         #region 车和机械臂点动
+        private double point_velocity_carwheel = 0.002;
+        private double point_velocity_cararm = 0.06;
+        private double point_velocity_robotarm = 0.08;
+        private double point_velocity_waist = 0.05;
+        private double point_velocity_wrist = 0.04;
+        private double point_velocity_hand = 0.8;
+
         private void btn_MouseDown(object sender, MouseButtonEventArgs e) //鼠标按下
         {
             velocityToLower = 0.0; //先归零
@@ -1162,7 +1185,7 @@ namespace HostComputer
                 {
                     // carmoveflag = 7;
                     // uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity / 1000;
+                    velocityToLower = pointvelocity * point_velocity_carwheel;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(1, 0x2);
@@ -1173,7 +1196,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity / 1000;
+                    velocityToLower = pointvelocity * point_velocity_carwheel;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(0, 0x2);
@@ -1184,7 +1207,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity / 1000;
+                    velocityToLower = pointvelocity * point_velocity_carwheel;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(3, 0x2);
@@ -1195,7 +1218,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity / 1000;
+                    velocityToLower = pointvelocity * point_velocity_carwheel;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(2, 0x2);
@@ -1206,7 +1229,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity * 0.03;
+                    velocityToLower = -pointvelocity * point_velocity_cararm;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(5, 0x2);
@@ -1217,7 +1240,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity * 0.03;
+                    velocityToLower = -pointvelocity * point_velocity_cararm;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(4, 0x2);
@@ -1228,7 +1251,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity * 0.03;
+                    velocityToLower = -pointvelocity * point_velocity_cararm;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(7, 0x2);
@@ -1239,7 +1262,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity * 0.03;
+                    velocityToLower = -pointvelocity * point_velocity_cararm;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(6, 0x2);
@@ -1250,7 +1273,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity / 1000;
+                    velocityToLower = -pointvelocity * point_velocity_carwheel;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(1, 0x2);
@@ -1261,7 +1284,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity / 1000;
+                    velocityToLower = -pointvelocity * point_velocity_carwheel;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(0, 0x2);
@@ -1272,7 +1295,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity / 1000;
+                    velocityToLower = -pointvelocity * point_velocity_carwheel;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(3, 0x2);
@@ -1283,7 +1306,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity / 1000;
+                    velocityToLower = -pointvelocity * point_velocity_carwheel;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(2, 0x2);
@@ -1294,7 +1317,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity * 0.03;
+                    velocityToLower = pointvelocity * point_velocity_cararm;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(5, 0x2);
@@ -1305,7 +1328,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity * 0.03;
+                    velocityToLower = pointvelocity * point_velocity_cararm;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(4, 0x2);
@@ -1316,7 +1339,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity * 0.03;
+                    velocityToLower = pointvelocity * point_velocity_cararm;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(7, 0x2);
@@ -1327,7 +1350,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity * 0.03;
+                    velocityToLower = pointvelocity * point_velocity_cararm;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(6, 0x2);
@@ -1341,7 +1364,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity * 0.04;
+                    velocityToLower = pointvelocity * point_velocity_waist;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(8, 0x2);
@@ -1352,7 +1375,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity * 0.02;
+                    velocityToLower = pointvelocity * point_velocity_robotarm;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(9, 0x2);
@@ -1363,7 +1386,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity * 0.02;
+                    velocityToLower = pointvelocity * point_velocity_robotarm;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(11, 0x2);
@@ -1374,7 +1397,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity * 0.02;
+                    velocityToLower = pointvelocity * point_velocity_robotarm;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(12, 0x2);
@@ -1385,7 +1408,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity * 0.02;
+                    velocityToLower = -pointvelocity * point_velocity_wrist;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(13, 0x2);
@@ -1396,7 +1419,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity * 0.8;
+                    velocityToLower = -pointvelocity * point_velocity_hand;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(14, 0x2);
@@ -1407,7 +1430,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity * 0.04;
+                    velocityToLower = -pointvelocity * point_velocity_waist;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(8, 0x2);
@@ -1418,7 +1441,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity * 0.02;
+                    velocityToLower = -pointvelocity * point_velocity_robotarm;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(9, 0x2);
@@ -1429,7 +1452,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity * 0.02;
+                    velocityToLower = -pointvelocity * point_velocity_robotarm;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(11, 0x2);
@@ -1440,7 +1463,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 7;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = -pointvelocity * 0.02;
+                    velocityToLower = -pointvelocity * point_velocity_robotarm;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(12, 0x2);
@@ -1451,7 +1474,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity * 0.02;
+                    velocityToLower = pointvelocity * point_velocity_wrist;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(13, 0x2);
@@ -1462,7 +1485,7 @@ namespace HostComputer
                 {
                     //carmoveflag = 8;
                     //uplowcom.SendUintInstruct(20, 0x2);
-                    velocityToLower = pointvelocity * 0.8;
+                    velocityToLower = pointvelocity * point_velocity_hand;
                     uplowcom.SendDoubleInstruct(velocityToLower, 0x4);
                     Thread.Sleep(1);
                     uplowcom.SendUintInstruct(14, 0x2);
