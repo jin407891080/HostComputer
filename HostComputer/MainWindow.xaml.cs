@@ -1983,15 +1983,18 @@ namespace HostComputer
                 {
                     uplowcom.SendUintInstruct(60, 0x1);
                     Thread.Sleep(10);
-
                 }
                 if ((string)mi.Header == "机械臂寻参")
                 {
                     uplowcom.SendUintInstruct(80, 0x1); //寻参
                 }
-                if ((string)mi.Header == "机械臂归位")
+                if ((string)mi.Header == "机械臂归原位")
                 {
-                    uplowcom.SendUintInstruct(290, 0x1); //机械臂归原位
+                    uplowcom.SendUintInstruct(330, 0x1); //机械臂归原位
+                }
+                if ((string)mi.Header == "机械臂夹取位")
+                {
+                    uplowcom.SendUintInstruct(340, 0x1); //机械臂夹取位
                 }
                 if ((string)mi.Header == "机器人暂停")
                 {
