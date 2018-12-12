@@ -469,7 +469,7 @@
                         <Separator/>
                         <MenuItem Height="50" Header="机械臂寻参" Click="MI_Click"/>
                         <MenuItem Height="50" Header="机械臂归原位" Click="MI_Click"/>
-                        <MenuItem Height="50" Header="机械臂夹取位" Click="MI_Click"/>
+                        <MenuItem Height="50" Header="机械臂朝天位" Click="MI_Click"/>
                         <Separator/>
                         <MenuItem Header="摆臂上使能" Click="MI_Click" />
                         <MenuItem Header="摆臂下使能" Click="MI_Click" />

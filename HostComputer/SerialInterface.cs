@@ -24,8 +24,8 @@ namespace HostComputer
 
         public void InitialPort()
         {
-            serialport1 = new SerialPort("COM2", 9600, Parity.None, 8, StopBits.One);
-            serialport2 = new SerialPort("COM1", 9600, Parity.None, 8, StopBits.One);
+            serialport1 = new SerialPort("COM1", 9600, Parity.None, 8, StopBits.One);
+            serialport2 = new SerialPort("COM2", 9600, Parity.None, 8, StopBits.One);
             serialport1.ReadTimeout = 500;
             serialport2.ReadTimeout = 500;
         }

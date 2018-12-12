@@ -1055,9 +1055,9 @@ namespace HostComputer
                             else
                             {
                                 //发机械臂xy速度
-                                uplowcom.SendDoubleInstruct(-armsendy, 0x5);
+                                uplowcom.SendDoubleInstruct(-armsendy, 0x7);
                                 Thread.Sleep(1);
-                                uplowcom.SendDoubleInstruct(armsendx, 0x6);
+                                uplowcom.SendDoubleInstruct(armsendx, 0x8);
                                 Thread.Sleep(1);
                                 uplowcom.SendUintInstruct(100, 0x1);
                                 Thread.Sleep(1);
@@ -1992,9 +1992,9 @@ namespace HostComputer
                 {
                     uplowcom.SendUintInstruct(330, 0x1); //机械臂归原位
                 }
-                if ((string)mi.Header == "机械臂夹取位")
+                if ((string)mi.Header == "机械臂朝天位")
                 {
-                    uplowcom.SendUintInstruct(340, 0x1); //机械臂夹取位
+                    uplowcom.SendUintInstruct(320, 0x1); //机械臂朝天位
                 }
                 if ((string)mi.Header == "机器人暂停")
                 {
