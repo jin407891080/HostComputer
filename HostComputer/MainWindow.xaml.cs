@@ -1043,12 +1043,12 @@ namespace HostComputer
 
                         if (armx < 80 && armx > -80 && army < 80 && army > -80)
                         {
-                            if (!is_arm_stop && armx < 10 && armx > -10 && army < 10 && army > -10)
+                            if (!is_arm_stop && armx < 10 && armx > -10 && army < 10 && army > -10 && armz < 10 && armz > -10)
                             {
                                 uplowcom.SendUintInstruct(70, 0x1); //暂停
                                 is_arm_stop = true;
                             }
-                            else if (is_arm_stop && armx < 10 && armx > -10 && army < 10 && army > -10)
+                            else if (is_arm_stop && armx < 10 && armx > -10 && army < 10 && army > -10 && armz < 10 && armz > -10)
                             {
                                 //Do nothing.
                             }
@@ -1062,15 +1062,15 @@ namespace HostComputer
                                 uplowcom.SendUintInstruct(100, 0x1);
                                 Thread.Sleep(1);
 
+                                //发腰速度
+                                uplowcom.SendDoubleInstruct(armsendz, 0x4);
+                                Thread.Sleep(1);
+                                uplowcom.SendUintInstruct(8, 0x2);
+                                Thread.Sleep(1);
+                                uplowcom.SendUintInstruct(130, 0x1);
+
                                 is_arm_stop = false;
                             }
-
-                            //发腰速度
-                            uplowcom.SendDoubleInstruct(armsendz, 0x4);
-                            Thread.Sleep(1);
-                            uplowcom.SendUintInstruct(8, 0x2);
-                            Thread.Sleep(1);
-                            uplowcom.SendUintInstruct(130, 0x1);
                         }
 
                         ////上位机空间坐标转换计算
@@ -1153,7 +1153,6 @@ namespace HostComputer
                             uplowcom.SendUintInstruct(90, 0x1);
                         }
                         break;
-
                     default:
                         break;
                 }
@@ -1171,7 +1170,7 @@ namespace HostComputer
         private double point_velocity_carwheel = 0.002;
         private double point_velocity_cararm = 0.06;
         private double point_velocity_robotarm = 0.08;
-        private double point_velocity_waist = 0.05;
+        private double point_velocity_waist = 0.02;
         private double point_velocity_wrist = 0.04;
         private double point_velocity_hand = 0.8;
 
@@ -1608,6 +1607,14 @@ namespace HostComputer
                 }
                 if (btn.Name == "ArmBtn6")
                 {
+                    //carmoveflag = 7;
+                    //uplowcom.SendUintInstruct(20, 0x2);
+                    //velocityToLower = -pointvelocity * point_velocity_hand;
+                    uplowcom.SendDoubleInstruct(0, 0x4);
+                    Thread.Sleep(1);
+                    uplowcom.SendUintInstruct(14, 0x2);
+                    Thread.Sleep(1);
+                    uplowcom.SendUintInstruct(130, 0x1);
                     SetInstructToZero();
                 }
                 if (btn.Name == "ArmBtn7")
@@ -1632,6 +1639,14 @@ namespace HostComputer
                 }
                 if (btn.Name == "ArmBtn12")
                 {
+                    //carmoveflag = 7;
+                    //uplowcom.SendUintInstruct(20, 0x2);
+                    //velocityToLower = -pointvelocity * point_velocity_hand;
+                    uplowcom.SendDoubleInstruct(0, 0x4);
+                    Thread.Sleep(1);
+                    uplowcom.SendUintInstruct(14, 0x2);
+                    Thread.Sleep(1);
+                    uplowcom.SendUintInstruct(130, 0x1);
                     SetInstructToZero();
                 }
                 if (btn.Name == "ArmBtn13")
@@ -1805,7 +1820,6 @@ namespace HostComputer
             if (stopflag == false)
             {
                 uplowcom.SendUintInstruct(70, 0x1);
-
             }
         }
 
