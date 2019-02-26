@@ -12,13 +12,13 @@ using System.Threading;
 
 namespace HostComputer
 {
-     public class Upper_Lower_Com
+    public class Upper_Lower_Com
     {
-       // public static uint S_FunctionInstruct;   //功能码
-       // public static uint S_AxisIndex;          //轴索引
-       // public static double S_Velocity;         //速度
+        // public static uint S_FunctionInstruct;   //功能码
+        // public static uint S_AxisIndex;          //轴索引
+        // public static double S_Velocity;         //速度
         //public static double S_VehicleVelo_x;    // 车体X轴速度
-       // public static double S_VehicleVelo_y;    // 车体Y轴速度
+        // public static double S_VehicleVelo_y;    // 车体Y轴速度
         public static double R_ArmPosition_x;        //末端X位置
         public static double R_ArmPosition_y;       //末端Y位置
         public static double R_ArmPosition_z;       //末端Z位置
@@ -32,24 +32,24 @@ namespace HostComputer
         public static double Gamma;                 //末端角度Gamma
         public static TcAdsClient tcAdsClient;
         public static AdsStream adsReadStream;
-        public static AdsStream adsWriteStream; 
-        public static bool m_NetConnection=false;//网络连接状态标志,默认为0未连接
+        public static AdsStream adsWriteStream;
+        public static bool m_NetConnection = false;//网络连接状态标志,默认为0未连接
 
 
         #region 连接下位机
         public void ConnectUpLow()
-        {          
-                AmsAddress serverAddress = new AmsAddress("192.168.1.222.1.1", Int32.Parse("bf02", System.Globalization.NumberStyles.HexNumber));
-                try
-                {
-                    tcAdsClient.Connect(serverAddress.NetId, serverAddress.Port);
-                }
-                catch(Exception ex1)
-                {
-                      MessageBox.Show(ex1.Message+"网络无法连接");
-                }
-            
-          
+        {
+            AmsAddress serverAddress = new AmsAddress("192.168.1.233.1.1", Int32.Parse("bf02", System.Globalization.NumberStyles.HexNumber));
+            try
+            {
+                tcAdsClient.Connect(serverAddress.NetId, serverAddress.Port);
+            }
+            catch (Exception ex1)
+            {
+                MessageBox.Show(ex1.Message + "网络无法连接");
+            }
+
+
         }
         //public void ConnectThread()
         //{
@@ -60,7 +60,7 @@ namespace HostComputer
         #endregion
 
         //发送整型指令
-        public void SendUintInstruct(uint Instruct,Int32 offset)
+        public void SendUintInstruct(uint Instruct, Int32 offset)
         {
             try
             {
@@ -98,5 +98,5 @@ namespace HostComputer
             //}
         }
 
-     }
+    }
 }

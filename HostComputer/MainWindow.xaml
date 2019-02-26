@@ -58,33 +58,9 @@
                             <Label Grid.Column="3" Grid.Row="0"  HorizontalAlignment="Center" Content="使能："/>
                         </Grid>
                     </GroupBox>
-                    <GroupBox Header="报警错误消息提示" Grid.Column="0" Grid.Row="2">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Label Grid.Column="0" Grid.Row="4" VerticalAlignment="Bottom" Margin="5,5,5,-5" Content="通讯错误："/>
-                            <TextBox Grid.Column="0" Grid.Row="5" Margin="5" IsEnabled="False" Text="通讯错误显示"/>
-                            <CheckBox Content="不显示" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Bottom" Margin="5,5,5,-5" Content="轴信息错误："/>
-                            <TextBox Grid.Column="0" Grid.Row="3" Margin="5" IsEnabled="False" Text="轴错误显示"/>
-                            <CheckBox Content="不显示" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom" Margin="5,5,5,-5" Content="车信息错误："/>
-                            <TextBox Grid.Column="0" Grid.Row="1" Margin="5" IsEnabled="False" Text="车信息错误显示"/>
-                            <CheckBox Content="不显示" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Grid>
-                    </GroupBox>
-                    <GroupBox Header="" Margin="5,5,5,5" Grid.Column="0" Grid.Row="1">
-                        <Grid ShowGridLines="False" Margin="0,0,0,0">
+
+                    <GroupBox Header="" Margin="5,5.5,5,128.5" Grid.Column="0" Grid.Row="1" BorderBrush="{x:Null}">
+                        <Grid ShowGridLines="False" Margin="0,0,-2,-141">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
@@ -92,8 +68,8 @@
                                 <RowDefinition Height="2*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <GroupBox Header="摄像头功能" Grid.Column="0" Grid.Row="0">
-                                <Grid ShowGridLines="False">
+                            <GroupBox Header="摄像头功能" Grid.Column="0" Grid.Row="0" BorderBrush="{x:Null}" Margin="0,0,0,10">
+                                <Grid ShowGridLines="False" Margin="0,0,0,44" HorizontalAlignment="Left" VerticalAlignment="Top">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition/>
                                         <ColumnDefinition />
@@ -105,61 +81,45 @@
                                         <RowDefinition/>
                                         <RowDefinition/>
                                         <RowDefinition/>
-                                        <RowDefinition/>
+
                                     </Grid.RowDefinitions>
-                                    <Button  Content="视频1" Name="Btn1" Grid.Row="0" Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="视频1放大显示" Click="Vedio1_Click"/>
+                                    <Button  Content="云台" Name="Btn1" Grid.Row="0" Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="视频1放大显示" Click="Vedio1_Click" Background="#FFC9DBFF"/>
                                     <Button  Content="视频5" Name="Btn10" Grid.Row="0" Grid.Column="4" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="视频5放大显示" Click="Vedio10_Click" Visibility="Collapsed"/>
-                                    <Button  Content="四宫格" Name="Btn5" Grid.Column="4" Width="50" Height="161" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="四分屏显示" Click="Vedio5_Click" Margin="3.143,3,2.857,2.286" Grid.RowSpan="3"/>
-                                    <Button  Content="视频3" Name="Btn3" Grid.Row="0" Grid.Column="2" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="视频3放大显示" Click="Vedio3_Click" Margin="1,2,3,2"/>
-                                    <Button  Content="视频4" Name="Btn4" Grid.Column="3" Grid.Row="0" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center"  ToolTip="视频4放大显示" Click="Vedio4_Click" Margin="3.5,3,0,3"/>
-                                    <Button  Content="视频2" Name="Btn2" Grid.Row="0" Grid.Column="1" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center"  ToolTip="视频2放大显示" Click="Vedio2_Click" Margin="2,3,0,3"/>
+                                    <Button  Content="四宫格" Name="Btn5" Grid.Column="4" Width="50" Height="105" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="四分屏显示" Click="Vedio5_Click" Margin="2.5,3,3,3" Grid.RowSpan="2" Background="#FFC9DBFF"/>
+                                    <Button  Content="后方" Name="Btn3" Grid.Row="0" Grid.Column="2" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="视频3放大显示" Click="Vedio3_Click" Margin="1,2,3,2" Background="#FFC9DBFF"/>
+                                    <Button  Content="手爪" Name="Btn4" Grid.Column="3" Grid.Row="0" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center"  ToolTip="视频4放大显示" Click="Vedio4_Click" Margin="3.5,3,0,3" Background="#FFC9DBFF"/>
+                                    <Button  Content="前方" Name="Btn2" Grid.Row="0" Grid.Column="1" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center"  ToolTip="视频2放大显示" Click="Vedio2_Click" Margin="2,3,0,3" Background="#FFC9DBFF"/>
                                     <Button  Content="录像1" Name="Btn6" Grid.Row="1" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,2,2,2" ToolTip="视频1录像" Click="Vedio6_Click"/>
                                     <Button  Content="录像2" Name="Btn7" Grid.Row="1" Grid.Column="1" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,2,2,2" ToolTip="视频2录像" Click="Vedio7_Click"/>
-                                    <Button  Content="录像3" Name="Btn8" Grid.Column="2" Grid.Row="1" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,3,3,3" ToolTip="视频3录像" Click="Vedio8_Click"/>
+                                    <Button  Content="录像3" Name="Btn8" Grid.Column="2" Grid.Row="1" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2.5,2.5,3" ToolTip="视频3录像" Click="Vedio8_Click"/>
                                     <Button  Content="录像4" Name="Btn9" Grid.Column="3" Grid.Row="1" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2,2,2" ToolTip="视频4录像" Click="Vedio9_Click"/>
                                     <Button  Content="录像5" Name="Btn11" Grid.Column="4" Grid.Row="1" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2,2,2" ToolTip="视频5录像" Click="Vedio11_Click" Visibility="Collapsed"/>
-                                    <Button  Content="注销1" Name="Btn12" Grid.Column="0" Grid.Row="2" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2,2,2" ToolTip="视频5录像" Click="Vedio12_Click"/>
-                                    <Button  Content="注销2" Name="Btn13" Grid.Column="1" Grid.Row="2" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2,2,2" ToolTip="视频5录像" Click="Vedio13_Click"/>
-                                    <Button  Content="注销3" Name="Btn14" Grid.Column="2" Grid.Row="2" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2,2,2" ToolTip="视频5录像" Click="Vedio14_Click"/>
-                                    <Button  Content="注销4" Name="Btn15" Grid.Column="3" Grid.Row="2" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2,2,2" ToolTip="视频5录像" Click="Vedio15_Click"/>
+                                    <Button  Content="注销1" Name="Btn12" Grid.Column="0" Grid.Row="2" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2,2,2" ToolTip="视频5录像" Click="Vedio12_Click" Visibility="Collapsed"/>
+                                    <Button  Content="注销2" Name="Btn13" Grid.Column="1" Grid.Row="2" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2,2,2" ToolTip="视频5录像" Click="Vedio13_Click" Visibility="Collapsed"/>
+                                    <Button  Content="注销3" Name="Btn14" Grid.Column="2" Grid.Row="2" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2,2,2" ToolTip="视频5录像" Click="Vedio14_Click" Visibility="Collapsed"/>
+                                    <Button  Content="注销4" Name="Btn15" Grid.Column="3" Grid.Row="2" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2,2,2" ToolTip="视频5录像" Click="Vedio15_Click" Visibility="Collapsed"/>
                                     <Button  Content="注销5" Name="Btn16" Grid.Column="4" Grid.Row="2" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,2,2,2" ToolTip="视频5录像" Click="Vedio16_Click" Visibility="Collapsed"/>
-                                </Grid>
-                            </GroupBox>
-                            <GroupBox Header="云台控制" Grid.Column="0" Grid.Row="1">
-                                <Grid ShowGridLines="False" Margin="0,-134,0,0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition/>
-
-                                    </Grid.RowDefinitions>
-
-                                    <Button  Name="PTZUPBtn" Grid.Row="0" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="云台上旋" MouseDown="btn_UPMouseDown" MouseUp="btn_UPMouseUp" Margin="3,158,3,27">
+                                    <Button  Name="PTZUPBtn" Grid.Row="2" Width="50" Height="50" HorizontalAlignment="Left" ToolTip="云台上旋" MouseDown="btn_UPMouseDown" MouseUp="btn_UPMouseUp" Margin="2,30.5,0,-27.5" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="{x:Null}">
                                         <Button.Background>
                                             <ImageBrush ImageSource="skin/Blue1.png"/>
                                         </Button.Background>
                                     </Button>
-                                    <Button  Name="PTZHOMEBtn" Grid.Column="2" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="云台回零" MouseDown="btn_HOMEMouseDown" MouseUp="btn_HOMEMouseUp" Margin="3,158,3,27" >
+                                    <Button  Name="PTZHOMEBtn" Grid.Column="2" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" ToolTip="云台回零" MouseDown="btn_HOMEMouseDown" MouseUp="btn_HOMEMouseUp" Margin="2,30.5,3.5,-27.5" Grid.Row="2" BorderBrush="{x:Null}" Foreground="{x:Null}" >
                                         <Button.Background>
                                             <ImageBrush ImageSource="skin/home.png"/>
                                         </Button.Background>
                                     </Button>
-                                    <Button  Name="PTZCDOWNBtn" Grid.Column="4" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="云台下旋" MouseDown="btn_DOWNMouseDown" MouseUp="btn_DOWNMouseUp" Margin="2,157,3,28" >
+                                    <Button  Name="PTZCDOWNBtn" Grid.Column="4" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" ToolTip="云台下旋" MouseDown="btn_DOWNMouseDown" MouseUp="btn_DOWNMouseUp" Margin="3,30.5,2.5,-27.5" Grid.Row="2" BorderBrush="{x:Null}" Foreground="{x:Null}" >
                                         <Button.Background>
                                             <ImageBrush ImageSource="skin/Blue2.png"/>
                                         </Button.Background>
                                     </Button>
-                                    <Button  Name="PTZRIGHTBtn" Grid.Column="1" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,158,3,27"  ToolTip="云台左旋" MouseDown="btn_LEFTMouseDown" MouseUp="btn_LEFTMouseUp">
+                                    <Button  Name="PTZRIGHTBtn" Grid.Column="1" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,30.5,3,-27.5"  ToolTip="云台左旋" MouseDown="btn_LEFTMouseDown" MouseUp="btn_LEFTMouseUp" Grid.Row="2" BorderBrush="{x:Null}" Foreground="{x:Null}">
                                         <Button.Background>
                                             <ImageBrush ImageSource="skin/Blue3.png"/>
                                         </Button.Background>
                                     </Button>
-                                    <Button  Name="PTZLEFTBtn" Grid.Column="3" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3,157,0,28" ToolTip="云台右旋" MouseDown="btn_RIGHTMouseDown" MouseUp="btn_RIGHTMouseUp">
+                                    <Button  Name="PTZLEFTBtn" Grid.Column="3" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3.5,30.5,0,-27.5" ToolTip="云台右旋" MouseDown="btn_RIGHTMouseDown" MouseUp="btn_RIGHTMouseUp" Grid.Row="2" BorderBrush="{x:Null}" Foreground="{x:Null}">
                                         <Button.Background>
                                             <ImageBrush ImageSource="skin/Blue4.png"/>
                                         </Button.Background>
@@ -168,10 +128,10 @@
                             </GroupBox>
                         </Grid>
                     </GroupBox>
-                    <WindowsFormsHost Grid.Column="1" Grid.Row="1" Margin="5,10,5,0" Foreground="Black" Background="#FFF5E9E9"  >
+                    <WindowsFormsHost Grid.Column="1" Grid.Row="1" Margin="5,9.5" Foreground="Black" Background="#FFF5E9E9"  >
                         <wf:Panel x:Name="Panel11" Margin="0,0,0,0" BackColor="DarkGray" CausesValidation="True"  AutoSize="True" />
                     </WindowsFormsHost>
-                    <gauge:CircularGaugeControl x:Name="myGauge2"  Grid.Column="1" Grid.Row="2"
+                    <gauge:CircularGaugeControl x:Name="myGauge2"  Grid.Column="1" Grid.Row="1"
 						Radius="90" 
 						ScaleRadius="55" 
 						ScaleStartAngle="140" 
@@ -203,8 +163,8 @@
 						PointerThickness ="5"
 						DialTextOffset="40"
 						DialText="当前速度"
-						DialTextColor="DarkBlue" Margin="0,35.333,203,0" />
-                    <gauge:CircularGaugeControl x:Name="myGauge3"  Grid.Column="1" Grid.Row="2"
+						DialTextColor="DarkBlue" Margin="0,399.5,203,0" Grid.RowSpan="2" />
+                    <gauge:CircularGaugeControl x:Name="myGauge3"  Grid.Column="1" Grid.Row="1"
 						Radius="90" 
 						ScaleRadius="55" 
 						ScaleStartAngle="140" 
@@ -236,7 +196,7 @@
 						PointerThickness ="5"
 						DialTextOffset="40"
 						DialText="末端速度"
-						DialTextColor="DarkBlue" Margin="202,35.333,0,0" />
+						DialTextColor="DarkBlue" Margin="202,399.5,0,0" Grid.RowSpan="2" />
 
                     <Grid Grid.Column="2" Grid.RowSpan="3" Margin="0,0,0,0">
                         <Grid.RowDefinitions>
@@ -515,41 +475,43 @@
                     </MenuItem>
                 </Menu>
 
-                <Slider Name="slider1" Canvas.Left="393" Canvas.Top="523" Width="240"  HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonUp="slider1_MouseLeftButtonUp" Maximum="5" />
-                <Button Name="SliderLeftButton" Width="20" Height="20" Canvas.Left="360" Canvas.Top="521" Click="SliderLeftButton_Click">
+                <Label HorizontalAlignment="Center" Content="机器人全局速率：" Canvas.Left="17" Canvas.Top="397"/>
+                <Label HorizontalAlignment="Center" Content="错误信息提示:" Canvas.Left="20" Canvas.Top="477"/>
+                <Slider Name="slider1" Canvas.Left="50" Canvas.Top="432" Width="179"  HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonUp="slider1_MouseLeftButtonUp" Maximum="5" BorderBrush="{x:Null}" />
+                <Button Name="SliderLeftButton" Width="20" Height="20" Canvas.Left="17" Canvas.Top="430" Click="SliderLeftButton_Click" BorderBrush="{x:Null}">
                     <Button.Background>
                         <ImageBrush ImageSource="skin/sliderleft.png"/>
                     </Button.Background>
                 </Button>
-                <Button Name="SliderRightButton" Width="20" Height="20" Canvas.Left="640" Canvas.Top="521" Click="SliderRightButton_Click">
+                <Button Name="SliderRightButton" Width="20" Height="20" Canvas.Left="234" Canvas.Top="430" Click="SliderRightButton_Click" BorderBrush="{x:Null}">
                     <Button.Background>
                         <ImageBrush ImageSource="skin/sliderright.png"/>
                     </Button.Background>
                 </Button>
-                <ListBox Name="Error" Height="201" Canvas.Top="537" Width="305" Canvas.Left="4" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
-                <TextBlock Name="PercentageShow" Text="0.0%" Canvas.Left="670" TextWrapping="Wrap" Canvas.Top="523" RenderTransformOrigin="-0.978,0.496" />
-                <Button Name="CarModeButton" Content="车摇杆" Canvas.Left="95" Canvas.Top="6" Width="55"  Height="55" ToolTip="车模式" Click="CarModeButton_Click" Foreground="White">
+                <ListBox Name="Error" Height="234" Canvas.Top="504" Width="295" Canvas.Left="10" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+                <TextBlock Name="PercentageShow" Text="0.0%" Canvas.Left="264" TextWrapping="Wrap" Canvas.Top="432" RenderTransformOrigin="-0.978,0.496" />
+                <Button Name="CarModeButton" Content="车" Canvas.Left="95" Canvas.Top="6" Width="55"  Height="55" ToolTip="车模式" Click="CarModeButton_Click" Foreground="White" BorderBrush="{x:Null}">
                     <Button.Background>
                         <ImageBrush ImageSource="skin/CarMode.png"/>
                     </Button.Background>
                 </Button>
-                <Button Name="handModeButton" Content="臂摇杆" Canvas.Left="95" Canvas.Top="62" Width="55"  Height="55" ToolTip="手模式" Click="handModeButton_Click" Foreground="Black">
+                <Button Name="handModeButton" Content="臂" Canvas.Left="95" Canvas.Top="62" Width="55"  Height="55" ToolTip="手模式" Click="handModeButton_Click" Foreground="Black" BorderBrush="{x:Null}">
                     <Button.Background>
                         <ImageBrush ImageSource="skin/Hand.png"/>
                     </Button.Background>
                 </Button>
-                <Button Name="NormalModeButton" Content="一般模式" Canvas.Left="175" Canvas.Top="6" Width="55" Height="55" ToolTip="一般模式" Click="NormalModeButton_Click" RenderTransformOrigin="-0.493,0.461"/>
-                <Button Name="Stop" Canvas.Top="6" Canvas.Left="250" Width="55"  Height="55" ToolTip="暂停" Click="Stop_Click">
+                <Button Name="NormalModeButton" Content="一般模式" Canvas.Left="175" Canvas.Top="6" Width="55" Height="55" ToolTip="一般模式" Click="NormalModeButton_Click" RenderTransformOrigin="-0.493,0.461" Background="#FFC9DBFF"/>
+                <Button Name="Stop" Canvas.Top="6" Canvas.Left="250" Width="55"  Height="55" ToolTip="暂停" Click="Stop_Click" BorderBrush="{x:Null}">
                     <Button.Background>
                         <ImageBrush ImageSource="skin/stop.png"/>
                     </Button.Background>
                 </Button>
-                <Button Name="btnClose"  Width="55" Height="55" Canvas.Left="250" Canvas.Top="62" ToolTip="关闭窗体" Click="btnClose_Click" >
+                <Button Name="btnClose"  Width="55" Height="55" Canvas.Left="250" Canvas.Top="62" ToolTip="关闭窗体" Click="btnClose_Click" BorderBrush="{x:Null}" >
                     <Button.Background>
                         <ImageBrush ImageSource="skin/WindowClose.png"/>
                     </Button.Background>
                 </Button>
-                <Button Name="ErrorClear" Content="复位" Canvas.Top="62" Canvas.Left="175" Width="55" Height="55" ToolTip="异常清错" Click="ErrorClear_Click"/>
+                <Button Name="ErrorClear" Content="复位" Canvas.Top="62" Canvas.Left="175" Width="55" Height="55" ToolTip="异常清错" Click="ErrorClear_Click" Background="#FFF1CECE"/>
             </Canvas>
         </Viewbox>
     </Grid>
