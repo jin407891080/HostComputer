@@ -161,6 +161,8 @@ namespace HostComputer
             ArmBtn12.AddHandler(Button.MouseDownEvent, new MouseButtonEventHandler(btn_MouseDown), true);
             ArmBtn13.AddHandler(Button.MouseDownEvent, new MouseButtonEventHandler(btn_MouseDown), true);
             ArmBtn14.AddHandler(Button.MouseDownEvent, new MouseButtonEventHandler(btn_MouseDown), true);
+            HandOpenBtn.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseDown), true);
+            HandCloseBtn.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseDown), true);
             ArmBtn1.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseUp), true);
             ArmBtn2.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseUp), true);
             ArmBtn3.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseUp), true);
@@ -175,6 +177,8 @@ namespace HostComputer
             ArmBtn12.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseUp), true);
             ArmBtn13.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseUp), true);
             ArmBtn14.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseUp), true);
+            HandOpenBtn.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseUp), true);
+            HandCloseBtn.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(btn_MouseUp), true);
             //点动模式履带摆动分组控制
             CarFrontUp.AddHandler(Button.MouseUpEvent, new MouseButtonEventHandler(CarFrontUp_MouseUp), true);
             CarFrontUp.AddHandler(Button.MouseDownEvent, new MouseButtonEventHandler(CarFrontUp_MouseDown), true);
@@ -1070,71 +1074,7 @@ namespace HostComputer
 
                                 is_arm_stop = false;
                             }
-
-                           
-                        }
-
-                        ////上位机空间坐标转换计算
-                        //armXYVelocityMatrix[0, 0] = armsendx;
-                        //armXYVelocityMatrix[1, 0] = armsendy;
-                        //wvCaculatingMatrix[0, 0] = -armLength1 * Math.Sin(armAngel1 * Math.PI / 180);
-                        //wvCaculatingMatrix[0, 1] = -armLength2 * Math.Sin(armAngel2 * Math.PI / 180) - armLength3 * Math.Sin(armAngel3 * Math.PI / 180);
-                        //wvCaculatingMatrix[1, 0] = armLength1 * Math.Cos(armAngel1 * Math.PI / 180);
-                        //wvCaculatingMatrix[1, 1] = armLength2 * Math.Cos(armAngel2 * Math.PI / 180) + armLength3 * Math.Cos(armAngel3 * Math.PI / 180);
-
-                        //CallInstrumentPanelDeleget(guagecurrentvalue, myGauge3); //更新表盘数据
-
-                        //bool isReverse = matrixCaculation.MatrixOpp(wvCaculatingMatrix, ref wvCaculatingMatrixReverse); //计算逆矩阵
-
-                        //if (isReverse)
-                        //{ //有逆矩阵才赋值
-                        //    matrixCaculation.MatrixMultiply(wvCaculatingMatrixReverse, armXYVelocityMatrix, ref armAngularVelocityMatrix); //计算机械臂三轴角速度
-                        //    armAngularVelocityMatrix[0, 0] = armAngularVelocityMatrix[0, 0] / Math.PI * 180; //从弧度转化为角度
-                        //    armAngularVelocityMatrix[1, 0] = armAngularVelocityMatrix[1, 0] / Math.PI * 180;
-
-                        //    //最大角速度保护
-                        //    if (armAngularVelocityMatrix[0, 0] < 3 && armAngularVelocityMatrix[0, 0] > -3 &&
-                        //        armAngularVelocityMatrix[1, 0] < 3 && armAngularVelocityMatrix[1, 0] > -3 && armsendz < 2 && armsendz > -2)
-                        //    {
-                        //        //发大臂速度
-                        //        uplowcom.SendDoubleInstruct(armAngularVelocityMatrix[0, 0], 0x4);
-                        //        Thread.Sleep(1);
-                        //        uplowcom.SendUintInstruct(9, 0x2);
-                        //        Thread.Sleep(1);
-                        //        uplowcom.SendUintInstruct(130, 0x1);
-                        //        Thread.Sleep(1);
-
-                        //        //发中臂速度
-                        //        uplowcom.SendDoubleInstruct(armAngularVelocityMatrix[1, 0], 0x4);
-                        //        Thread.Sleep(1);
-                        //        uplowcom.SendUintInstruct(10, 0x2);
-                        //        Thread.Sleep(1);
-                        //        uplowcom.SendUintInstruct(130, 0x1);
-                        //        Thread.Sleep(1);
-
-                        //        //发小臂速度
-                        //        uplowcom.SendDoubleInstruct(armAngularVelocityMatrix[1, 0], 0x4);
-                        //        Thread.Sleep(1);
-                        //        uplowcom.SendUintInstruct(11, 0x2);
-                        //        Thread.Sleep(1);
-                        //        uplowcom.SendUintInstruct(130, 0x1);
-
-                        //        //发腰速度
-                        //        uplowcom.SendDoubleInstruct(armsendz, 0x4);
-                        //        Thread.Sleep(1);
-                        //        uplowcom.SendUintInstruct(8, 0x2);
-                        //        Thread.Sleep(1);
-                        //        uplowcom.SendUintInstruct(130, 0x1);
-                        //    }
-
-
-                        //    CallErrorDeleget(Error, "——————————");
-                        //    CallErrorDeleget(Error, "终端线速度-" + "x:" + armXYVelocityMatrix[0, 0].ToString() + "," + "y:" + armXYVelocityMatrix[1, 0].ToString());
-                        //    CallErrorDeleget(Error, "三轴角速度-" + "1:" + armAngularVelocityMatrix[0, 0].ToString() + "," + "2:" + armAngularVelocityMatrix[1, 0].ToString() + "," + "3:" + armAngularVelocityMatrix[1, 0].ToString());
-                        //    CallErrorDeleget(Error, "机械臂三个角度：" + armAngel1.ToString() + "," + armAngel2.ToString() + "," + armAngel3.ToString());
-                        //    CallErrorDeleget(Error, "计算矩阵" + wvCaculatingMatrix[0, 0] + "," + wvCaculatingMatrix[0, 1] + "," + wvCaculatingMatrix[1, 0] + "," + wvCaculatingMatrix[1, 1]);
-                        //    CallErrorDeleget(Error, "计逆矩阵" + wvCaculatingMatrixReverse[0, 0] + "," + wvCaculatingMatrixReverse[0, 1] + "," + wvCaculatingMatrixReverse[1, 0] + "," + wvCaculatingMatrixReverse[1, 1]);
-                        //}
+                        }                       
                         break;
 
                     case 10:   //车模式
@@ -1945,16 +1885,41 @@ namespace HostComputer
             uplowcom.ConnectUpLow(); //连接上下位机
         }
 
+        private void LightOn_Click(object sender, RoutedEventArgs e)
+        {
+            uplowcom.SendUintInstruct(400, 0x1);
+        }
+
+        private void LightOff_Click(object sender, RoutedEventArgs e)
+        {
+            uplowcom.SendUintInstruct(410, 0x1);
+        }
+
+        private void ArmParaFind_Click(object sender, RoutedEventArgs e)
+        {
+            uplowcom.SendUintInstruct(80, 0x1); //寻参
+        }
+
+        private void ArmParaCrawl_Click(object sender, RoutedEventArgs e)
+        {
+            uplowcom.SendUintInstruct(340, 0x1); //机械臂夹取位
+        }
+
+        private void ArmParaZero_Click(object sender, RoutedEventArgs e)
+        {
+            uplowcom.SendUintInstruct(330, 0x1); //机械臂归原位
+        }
+
         private void MI_Click(object sender, RoutedEventArgs e)
         {
             MenuItem m = sender as MenuItem;
             if ((string)m.Header == "车灯关")
             {
-                uplowcom.SendUintInstruct(310, 0x1);
+                uplowcom.SendUintInstruct(410, 0x1);
             }
             if ((string)m.Header == "车灯开")
             {
-                uplowcom.SendUintInstruct(320, 0x1);
+                uplowcom.SendUintInstruct(400, 0x1);
             }
 
             if (stopflag == false)
@@ -1964,7 +1929,6 @@ namespace HostComputer
                 {
                     //uplowcom.SendUintInstruct(10, 0x1);
                     Thread.Sleep(10);
-
                 }
                 if ((string)m.Header == "连接")
                 {
@@ -2867,6 +2831,8 @@ namespace HostComputer
             robotInteraction.Udp_SendMessage(RobotInteraction.JPos);
         }
         #endregion
+
         #endregion
+
     }
 }
